@@ -3,4 +3,4 @@ requests
 qrcode[pil]
 Pillow
 gunicorn
-secp256k1
+coincurve
