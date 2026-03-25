@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template_string, request, jsonify, session
 import requests
 import qrcode
@@ -23,7 +22,7 @@ HEADERS = {
     "X-Api-Key": LNBITS_API_KEY,
     "Content-type": "application/json"
 }
-#hi
+
 ARTICLES = {
     1: {
         "title": "Bitcoin Lightning: бъдещето на интернет плащанията",
@@ -249,7 +248,22 @@ button:hover {
     color: #9ca3af;
 }
 
-      
+.ln-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f2a900;
+    background: transparent;
+    border: 1px solid rgba(242, 169, 0, 0.4);
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.ln-button:hover {
+    background: rgba(242, 169, 0, 0.1);
+}
 
     </style>
 </head>
@@ -292,6 +306,12 @@ button:hover {
                     <div class="qr-box">
                         <p><b>Сканирай QR за плащане:</b></p>
                         <img src="data:image/png;base64,${data.qr}" width="200"><br>
+                            <a 
+                            href="lightning:${data.pr}"
+                            class="ln-button"
+                            >
+                            ⚡ Отвори с Lightning wallet
+                            </a>
                         <p><i>Изчаква се плащане...</i></p>
                         <button onclick="cancelPayment(${id})" 
                                 style="background:#ddd;margin-top:10px;">
@@ -397,4 +417,3 @@ def full_article(article_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
